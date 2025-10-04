@@ -6,9 +6,10 @@
 <title>Corporate Offer Agreement - Tolaab</title>
 
 <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.min.css" rel="stylesheet" type="text/css">
-
 <style>
 :root {
+  -webkit-locale: "en";
+  --font-sans: ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
   --background-color-main: #eceef5;
   --background-color-primary: #5f2eed;
   --background-color-primary-dark: #310d9b;
@@ -18,10 +19,9 @@
   --radius-xl: 1rem;
 }
 
-/* Base */
 body {
   background-color: var(--background-color-main);
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-sans);
   color: var(--text-color-main);
   overflow-x: hidden;
   position: relative;
@@ -32,37 +32,26 @@ body {
   padding: 60px 16px;
 }
 
-/* Smooth floating animation */
-.floating-circle {
-  position: absolute;
-  border-radius: 50%;
-  background-color: var(--background-color-primary);
-  animation: float 18s ease-in-out infinite;
-  opacity: 0.3;
+/* Floating Animation */
+.animate-login-shapes {
+  animation: float 14s ease-in-out infinite;
 }
-.circle1 { width: 380px; height: 380px; top: -120px; left: -150px; animation-delay: 0s; opacity: 0.25; }
-.circle2 { width: 300px; height: 300px; bottom: -100px; right: -120px; animation-delay: 2s; opacity: 0.35; }
-.circle3 { width: 220px; height: 220px; top: 45%; left: -100px; animation-delay: 4s; opacity: 0.3; }
-.circle4 { width: 180px; height: 180px; bottom: 25%; right: 10%; animation-delay: 6s; opacity: 0.35; }
-.circle5 { width: 260px; height: 260px; top: 10%; right: 20%; animation-delay: 3s; opacity: 0.3; }
-.circle6 { width: 160px; height: 160px; bottom: 10%; left: 15%; animation-delay: 5s; opacity: 0.4; }
-
 @keyframes float {
-  0%, 100% { transform: translateY(0) translateX(0); }
-  50% { transform: translateY(-40px) translateX(25px); }
+  0%, 100% { transform: translateY(0px) translateX(0px) scale(1); }
+  50% { transform: translateY(-40px) translateX(25px) scale(1.05); }
 }
 
-/* Card */
+/* Form Card */
 .form-card {
   width: 100%;
   max-width: 950px;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(255, 255, 255, 0.9);
   border-radius: var(--radius-xl);
   padding: 40px 36px 50px 36px;
   box-shadow: 0 10px 50px rgba(95, 46, 237, 0.25);
   position: relative;
   z-index: 10;
-  backdrop-filter: blur(14px);
+  backdrop-filter: blur(12px);
 }
 
 /* Logo */
@@ -151,17 +140,43 @@ input:focus, select:focus {
   color: #555;
   margin-top: 10px;
 }
+
+/* Animated Background Circles */
+.bg-primary { background-color: var(--background-color-primary); }
+.rounded-full { border-radius: 9999px; }
+.absolute { position: absolute; }
+.opacity-25 { opacity: 0.25; }
+.opacity-40 { opacity: 0.4; }
+.opacity-50 { opacity: 0.5; }
+
+.circle { position: absolute; border-radius: 50%; background: var(--background-color-primary); animation: float 14s ease-in-out infinite; }
+
+.circle1 { width: 400px; height: 400px; top: -180px; left: -150px; opacity: 0.3; animation-delay: 0s; }
+.circle2 { width: 300px; height: 300px; bottom: -120px; right: -120px; opacity: 0.4; animation-delay: 1s; }
+.circle3 { width: 220px; height: 220px; top: 50%; left: -120px; opacity: 0.25; animation-delay: 2s; }
+.circle4 { width: 180px; height: 180px; top: 30%; right: 10%; opacity: 0.35; animation-delay: 3s; }
+.circle5 { width: 260px; height: 260px; bottom: 20%; left: 10%; opacity: 0.3; animation-delay: 4s; }
+.circle6 { width: 150px; height: 150px; bottom: 10%; right: 25%; opacity: 0.45; animation-delay: 5s; }
+.circle7 { width: 100px; height: 100px; top: 15%; left: 35%; opacity: 0.25; animation-delay: 6s; }
+.circle8 { width: 180px; height: 180px; bottom: 40%; right: 45%; opacity: 0.3; animation-delay: 7s; }
+.circle9 { width: 240px; height: 240px; top: 75%; left: 55%; opacity: 0.4; animation-delay: 8s; }
+.circle10 { width: 120px; height: 120px; top: 10%; right: 35%; opacity: 0.25; animation-delay: 9s; }
+
 </style>
 </head>
 
 <body>
-  <!-- 6 Floating Circles -->
-  <div class="floating-circle circle1"></div>
-  <div class="floating-circle circle2"></div>
-  <div class="floating-circle circle3"></div>
-  <div class="floating-circle circle4"></div>
-  <div class="floating-circle circle5"></div>
-  <div class="floating-circle circle6"></div>
+  <!-- Animated Background Circles -->
+  <div class="circle circle1"></div>
+  <div class="circle circle2"></div>
+  <div class="circle circle3"></div>
+  <div class="circle circle4"></div>
+  <div class="circle circle5"></div>
+  <div class="circle circle6"></div>
+  <div class="circle circle7"></div>
+  <div class="circle circle8"></div>
+  <div class="circle circle9"></div>
+  <div class="circle circle10"></div>
 
   <div class="form-card">
     <div class="logo">
@@ -175,9 +190,18 @@ input:focus, select:focus {
       <!-- Partner Details -->
       <div class="section-title">تفاصيل الشريك / Partner Details</div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div><label>اسم الشركة / Company Name:</label><input type="text" name="company_name" required></div>
-        <div><label>العلامة التجارية / Brand(s):</label><input type="text" name="brands" required></div>
-        <div><label>رقم الرخصة التجارية / License No.:</label><input type="text" name="license_no" required></div>
+        <div>
+          <label>اسم الشركة / Company Name:</label>
+          <input type="text" name="company_name" placeholder="Enter company name" required>
+        </div>
+        <div>
+          <label>العلامة التجارية / Brand(s):</label>
+          <input type="text" name="brands" placeholder="Enter brand names" required>
+        </div>
+        <div>
+          <label>رقم الرخصة التجارية / License No.:</label>
+          <input type="text" name="license_no" placeholder="Enter license number" required>
+        </div>
         <div>
           <label>الفئة / Category:</label>
           <select name="category" required>
@@ -215,31 +239,43 @@ input:focus, select:focus {
       <!-- Contact Details -->
       <div class="section-title">بيانات الاتصال / Contact Details</div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div><label>الشخص الذي يمكن الاتصال به / Contact Person:</label><input type="text" name="contact_person" required></div>
-        <div><label>رقم الهاتف المتحرك / Mobile No.:</label><input type="tel" name="mobile_no" required></div>
+        <div>
+          <label>الشخص الذي يمكن الاتصال به / Contact Person:</label>
+          <input type="text" name="contact_person" placeholder="Full Name" required>
+        </div>
+        <div>
+          <label>رقم الهاتف المتحرك / Mobile No.:</label>
+          <input type="tel" name="mobile_no" placeholder="+971 XX XXX XXXX" required>
+        </div>
       </div>
 
       <!-- Upload Documents -->
       <div class="section-title">Upload Documents</div>
-      <div class="mb-4"><label>Trade License:</label><input type="file" name="trade_license" class="file-input" required></div>
-      <div class="mb-4"><label>Tax Registration:</label><input type="file" name="tax_registration" class="file-input"></div>
+      <div class="mb-4">
+        <label>Trade License:</label>
+        <input type="file" name="trade_license" class="file-input" accept="image/*,application/pdf" required>
+      </div>
+      <div class="mb-4">
+        <label>Tax Registration:</label>
+        <input type="file" name="tax_registration" class="file-input" accept="image/*,application/pdf">
+      </div>
 
       <!-- Transaction Commission -->
       <div class="section-title">Transaction Commission / عمولة المعاملات</div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-        <label class="flex items-start gap-3 p-4 bg-white rounded-lg border hover:shadow-md transition">
+        <label class="flex items-start gap-3 p-4 bg-white rounded-lg cursor-pointer border hover:shadow-md transition">
           <input type="radio" name="commission_option" value="option1" class="radio radio-primary mt-1" required>
           <span>First Option: 1499 AED registration + 3% transaction</span>
         </label>
-        <label class="flex items-start gap-3 p-4 bg-white rounded-lg border hover:shadow-md transition">
+        <label class="flex items-start gap-3 p-4 bg-white rounded-lg cursor-pointer border hover:shadow-md transition">
           <input type="radio" name="commission_option" value="option2" class="radio radio-primary mt-1">
           <span>Second Option: Zero upfront, 5% on transactions</span>
         </label>
       </div>
 
-      <!-- Terms -->
+      <!-- Terms & Conditions -->
       <div class="section-title">Terms & Conditions</div>
-      <label class="flex items-center gap-3 p-4 bg-white rounded-lg border hover:shadow-md transition">
+      <label class="flex items-center gap-3 p-4 bg-white rounded-lg cursor-pointer border hover:shadow-md transition">
         <input type="checkbox" name="accept_terms" class="checkbox checkbox-primary mt-1" required>
         <span>I accept the Terms & Conditions (<span class="text-primary cursor-pointer" onclick="toggleTerms()">Read</span>)</span>
       </label>
