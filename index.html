@@ -8,207 +8,296 @@
 <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.min.css" rel="stylesheet" type="text/css">
 <style>
 :root {
-  --bg: linear-gradient(180deg, #1454e9 0%, #6692f1 100%);
-  --accent: #6A42FF;
-  --muted: rgba(255,255,255,0.72);
-  --radius: 14px;
+  /* --- Core Theme Variables --- */
+  -webkit-locale: "en";
+  --font-sans: ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  --background-color-main: #eceef5;
+  --background-color-primary: #5f2eed;
+  --background-color-primary-dark: #310d9b;
+  --text-color-main: #292d32;
+  --text-color-paragraph: #757575;
+  --text-color-primary: #5f2eed;
+  --radius-xl: 1rem;
 }
+
 body {
-  font-family: "Inter", sans-serif;
-  background: var(--bg);
-  color: #9d9da3;
+  background-color: var(--background-color-main);
+  font-family: var(--font-sans);
+  color: var(--text-color-main);
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
-  padding: 40px;
+  align-items: flex-start;
+  padding: 60px 16px;
 }
+
+.animate-login-shapes {
+  animation: float 10s ease-in-out infinite;
+}
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(30px) rotate(5deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
 .form-card {
   width: 100%;
-  max-width: 900px;
-  background: rgba(255,255,255,0.05);
-  border-radius: var(--radius);
-  padding: 40px 36px;
-  box-shadow: 0 8px 40px rgba(78, 113, 186, 0.55);
+  max-width: 950px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: var(--radius-xl);
+  padding: 40px 36px 50px 36px;
+  box-shadow: 0 10px 50px rgba(95, 46, 237, 0.25);
+  position: relative;
+  z-index: 10;
+  backdrop-filter: blur(12px);
 }
-.logo {
-  width: 80px;
-  height: 80px;
-  margin: 0 auto 16px;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 6px 20px rgba(106,66,255,0.25);
-}
-.logo img { width: 100%; height: 100%; object-fit: cover; }
 
-/* Main title */
+/* Logo */
+.logo {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 20px;
+}
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Title */
 h1 {
   text-align: center;
-  font-size: 48px; /* Bigger than section titles */
-  font-weight: 700;
-  margin-bottom: 30px;
-  color: #e0daf5; 
+  font-size: 46px;
+  font-weight: 800;
+  color: var(--background-color-primary);
+  margin-bottom: 20px;
 }
 
-/* Section titles */
+/* Description */
+p {
+  text-align: center;
+  font-size: 15px;
+  color: var(--text-color-paragraph);
+  margin-bottom: 40px;
+}
+
+/* Section Titles */
 .section-title {
   font-weight: 700;
-  font-size: 22px; 
+  font-size: 20px;
+  color: var(--background-color-primary-dark);
+  margin-top: 20px;
   margin-bottom: 12px;
-  color: #ededed;
+  border-left: 5px solid var(--background-color-primary);
+  padding-left: 10px;
 }
 
-p { text-align: center; font-size: 15px; color: var(--muted); margin-bottom: 30px; }
-form { display: flex; flex-direction: column; gap: 20px; color: #ededed; }
-label { font-weight: 600; font-size: 15px; margin-bottom: 6px; display: block; }
-input, select, .file-input { 
-  width: 100%; padding: 14px 16px; border: none; border-radius: 10px; 
-  background: rgba(255,255,255,0.15); color: #090246; font-size: 15px; outline: none; 
+/* Inputs */
+input, select, .file-input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #f9f9fb;
+  font-size: 15px;
+  color: #333;
+  outline: none;
 }
-input::placeholder { color: rgba(255,255,255,0.55); }
-.file-input { background: none; }
+input:focus, select:focus {
+  border-color: var(--background-color-primary);
+  box-shadow: 0 0 0 3px rgba(95, 46, 237, 0.2);
+}
+
+/* Button */
 .btn {
-  background: linear-gradient(90deg, var(--accent), #2b18b8);
-  color: rgb(69, 41, 231); font-size: 16px; font-weight: 600; padding: 12px;
-  border: none; border-radius: 12px; cursor: pointer; transition: transform 0.15s;
-  margin-top: 10px; box-shadow: 0 10px 30px rgba(42,15,150,0.3);
+  background: linear-gradient(90deg, var(--background-color-primary), var(--background-color-primary-dark));
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: transform 0.2s ease, box-shadow 0.3s;
+  box-shadow: 0 10px 25px rgba(95, 46, 237, 0.3);
 }
-.btn:hover { transform: translateY(-2px); }
-.toggle-section { display: none; background: rgba(255,255,255,0.08); padding: 16px; border-radius: 10px; margin-top: 10px; font-size: 14px; line-height: 1.5; }
-.checkbox-custom { accent-color: var(--accent); margin-right: 8px; }
-.radio-custom { accent-color: var(--accent); margin-right: 8px; }
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(95, 46, 237, 0.4);
+}
+
+/* Terms Toggle */
+.toggle-section {
+  display: none;
+  background: #f7f7fb;
+  padding: 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #555;
+  margin-top: 10px;
+}
+
+/* Animated Backgrounds */
+.size-96 { width: 24rem; height: 24rem; }
+.size-80 { width: 20rem; height: 20rem; }
+.bg-primary { background-color: var(--background-color-primary); }
+.rounded-full { border-radius: 9999px; }
+.absolute { position: absolute; }
+.-top-72 { top: -18rem; }
+.-left-32 { left: -8rem; }
+.-bottom-40 { bottom: -10rem; }
+.-right-32 { right: -8rem; }
+.opacity-30 { opacity: 0.3; }
+.opacity-60 { opacity: 0.6; }
 </style>
 </head>
+
 <body>
+  <!-- Animated Background Shapes -->
+  <div class="animate-login-shapes size-96 rounded-full absolute -top-72 -left-32 bg-primary opacity-30"></div>
+  <div class="animate-login-shapes size-80 rounded-full absolute -bottom-40 -right-32 bg-primary opacity-60"></div>
 
-<div class="form-card">
-  <div class="logo">
-    <img src="https://tolaab.com/wp-content/uploads/2025/06/ic_launcher.png" alt="Tolaab Logo">
+  <div class="form-card">
+    <div class="logo">
+      <img src="https://tolaab.com/wp-content/uploads/2025/06/ic_launcher.png" alt="Tolaab Logo">
+    </div>
+    <h1>Corporate Offer Agreement - Tolaab</h1>
+    <p>This form will be <b>Digitally Signed</b> after submission and <b>Stamped & Shared</b> back with you.</p>
+
+    <form id="coaForm" action="https://formspree.io/f/mdklpbdd" method="POST" enctype="multipart/form-data">
+
+      <!-- Partner Details -->
+      <div class="section-title">تفاصيل الشريك / Partner Details</div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label>اسم الشركة / Company Name:</label>
+          <input type="text" name="company_name" placeholder="Enter company name" required>
+        </div>
+        <div>
+          <label>العلامة التجارية / Brand(s):</label>
+          <input type="text" name="brands" placeholder="Enter brand names" required>
+        </div>
+        <div>
+          <label>رقم الرخصة التجارية / License No.:</label>
+          <input type="text" name="license_no" placeholder="Enter license number" required>
+        </div>
+        <div>
+          <label>الفئة / Category:</label>
+          <select name="category" required>
+            <option value="" disabled selected>Select a category</option>
+            <option value="Retailers & Lifestyle">Retailers & Lifestyle</option>
+            <option value="Restaurants">Restaurants</option>
+            <option value="Cafes">Cafes</option>
+            <option value="Clinic & Beauty">Clinic & Beauty</option>
+            <option value="Auto Centers">Auto Centers</option>
+            <option value="Salons & SPA">Salons & SPA</option>
+            <option value="Pharmacy">Pharmacy</option>
+            <option value="Fitness">Fitness</option>
+            <option value="Education">Education</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="Perfume">Perfume</option>
+            <option value="Medical Centers">Medical Centers</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div>
+          <label>الإمارة المقر الرئيسي / Headquarter Emirate:</label>
+          <select name="headquarter_emirate" required>
+            <option value="" disabled selected>Select Emirate</option>
+            <option value="Abu Dhabi">Abu Dhabi</option>
+            <option value="Dubai">Dubai</option>
+            <option value="Sharjah">Sharjah</option>
+            <option value="Ajman">Ajman</option>
+            <option value="Umm Al Quwain">Umm Al Quwain</option>
+            <option value="Ras Al Khaimah">Ras Al Khaimah</option>
+            <option value="Fujairah">Fujairah</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Contact Details -->
+      <div class="section-title">بيانات الاتصال / Contact Details</div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label>الشخص الذي يمكن الاتصال به / Contact Person:</label>
+          <input type="text" name="contact_person" placeholder="Full Name" required>
+        </div>
+        <div>
+          <label>رقم الهاتف المتحرك / Mobile No.:</label>
+          <input type="tel" name="mobile_no" placeholder="+971 XX XXX XXXX" required>
+        </div>
+      </div>
+
+      <!-- Upload Documents -->
+      <div class="section-title">Upload Documents</div>
+      <div class="mb-4">
+        <label>Trade License:</label>
+        <input type="file" name="trade_license" class="file-input" accept="image/*,application/pdf" required>
+      </div>
+      <div class="mb-4">
+        <label>Tax Registration:</label>
+        <input type="file" name="tax_registration" class="file-input" accept="image/*,application/pdf">
+      </div>
+
+      <!-- Transaction Commission -->
+      <div class="section-title">Transaction Commission / عمولة المعاملات</div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        <label class="flex items-start gap-3 p-4 bg-white rounded-lg cursor-pointer border hover:shadow-md transition">
+          <input type="radio" name="commission_option" value="option1" class="radio radio-primary mt-1" required>
+          <span>First Option: 1499 AED registration + 3% transaction</span>
+        </label>
+        <label class="flex items-start gap-3 p-4 bg-white rounded-lg cursor-pointer border hover:shadow-md transition">
+          <input type="radio" name="commission_option" value="option2" class="radio radio-primary mt-1">
+          <span>Second Option: Zero upfront, 5% on transactions</span>
+        </label>
+      </div>
+
+      <!-- Terms & Conditions -->
+      <div class="section-title">Terms & Conditions</div>
+      <label class="flex items-center gap-3 p-4 bg-white rounded-lg cursor-pointer border hover:shadow-md transition">
+        <input type="checkbox" name="accept_terms" class="checkbox checkbox-primary mt-1" required>
+        <span>I accept the Terms & Conditions (<span class="text-primary cursor-pointer" onclick="toggleTerms()">Read</span>)</span>
+      </label>
+      <div id="termsContent" class="toggle-section grid grid-cols-1 md:grid-cols-2 gap-6 mt-2">
+        <div>
+          نحن "<span id='companyNamePlaceholderAr'>Company Name</span>" نوافق على دعم برنامج طلاب والالتزام بالشروط أدناه.<br><br>
+          تسري لمدة سنة من 1 نوفمبر 2025، ما لم يخطر أحد الطرفين الآخر 30 يوماً مسبقاً.<br>
+          تحتفظ طلاب بحق إيقاف الخدمات في حال عدم السداد بعد 5 أيام أو الإخلال بالشروط.<br>
+          يحق لأي طرف إنهاء الاتفاقية بإشعار 30 يوماً.<br>
+          يتعهد الطرف الثاني بأن تكون ملفات التسويق قابلة للتحرير للطرف الأول.<br>
+          يتعهد الطرف الثاني بمنح الخصم بجميع الفروع.<br>
+          العمولة شهرية والتفاصيل بلوحة التحكم.<br>
+          الالتزام بسرية المعلومات.<br>
+          عدم استخدام المنصة لأغراض غير قانونية.<br>
+          تخضع الاتفاقية لقوانين أبوظبي والإمارات.
+        </div>
+        <div>
+          We, "<span id='companyNamePlaceholder'>Company Name</span>", agree to support Tolaab program and abide by terms below.<br><br>
+          Valid for 1 year from 1st Nov 2025 unless 30-day renewal notice.<br>
+          Suspension possible for non-payment or breach.<br>
+          Either party may terminate with 30-day notice.<br>
+          Marketing files editable for Tolaab’s use.<br>
+          Discount applies to all UAE branches.<br>
+          Commission tracked monthly in dashboard.<br>
+          Confidentiality required.<br>
+          No illegal use of Tolaab platform.<br>
+          Governed by Abu Dhabi and UAE federal laws.
+        </div>
+      </div>
+
+      <button type="submit" class="btn w-full">Submit Information</button>
+    </form>
   </div>
-  <h1>Corporate Offer Agreement - Tolaab</h1>
-  <p>Please fill in your company details carefully. This form will be <b>Digitally Signed</b> after submission and <b>Stamped & Shared</b> back with you.</p>
-
-  <form id="coaForm" action="https://formspree.io/f/mdklpbdd" method="POST" enctype="multipart/form-data">
-    
-    <!-- Partner Details -->
-    <div class="section-title">تفاصيل الشريك / Details Partner</div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <div>
-        <label>اسم الشركة / Company Name:</label>
-        <input type="text" name="company_name" placeholder="Enter company name" required>
-      </div>
-      <div>
-        <label>العلامة التجارية / Brand(s):</label>
-        <input type="text" name="brands" placeholder="Enter brand names" required>
-      </div>
-      <div>
-        <label>رقم الرخصة التجارية / License No.:</label>
-        <input type="text" name="license_no" placeholder="Enter license number" required>
-      </div>
-      <div>
-        <label>الفئة / Category:</label>
-        <select name="category" required>
-          <option value="" disabled selected>Select a category</option>
-          <option value="Retailers & Lifestyle">Retailers & Lifestyle</option>
-          <option value="Restaurants">Restaurants</option>
-          <option value="Cafes">Cafes</option>
-          <option value="Clinic & Beauty">Clinic & Beauty</option>
-          <option value="Auto Centers">Auto Centers</option>
-          <option value="Salons & SPA">Salons & SPA</option>
-          <option value="Pharmacy">Pharmacy</option>
-          <option value="Fitness">Fitness</option>
-          <option value="Education">Education</option>
-          <option value="Entertainment">Entertainment</option>
-          <option value="Perfume">Perfume</option>
-          <option value="Medical Centers">Medical Centers</option>
-          <option value="Other">Other</option>
-        </select>
-      </div>
-      <div>
-        <label>الإمارة المقر الرئيسي / Headquarter Emirate:</label>
-        <select name="headquarter_emirate" required>
-          <option value="" disabled selected>Select Emirate</option>
-          <option value="Abu Dhabi">Abu Dhabi</option>
-          <option value="Dubai">Dubai</option>
-          <option value="Sharjah">Sharjah</option>
-          <option value="Ajman">Ajman</option>
-          <option value="Umm Al Quwain">Umm Al Quwain</option>
-          <option value="Ras Al Khaimah">Ras Al Khaimah</option>
-          <option value="Fujairah">Fujairah</option>
-        </select>
-      </div>
-    </div>
-
-    <!-- Contact Details -->
-    <div class="section-title">بيانات الاتصال / Contact Details</div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <div>
-        <label>الشخص الذي يمكن الاتصال به / Contact Person:</label>
-        <input type="text" name="contact_person" placeholder="Full Name" required>
-      </div>
-      <div>
-        <label>رقم الهاتف المتحرك / Mobile No.:</label>
-        <input type="tel" name="mobile_no" placeholder="+971 XX XXX XXXX" required>
-      </div>
-    </div>
-
-    <!-- Upload Documents -->
-    <div class="section-title">Upload Documents</div>
-    <div class="mb-4">
-      <label>Trade License:</label>
-      <input type="file" name="trade_license" class="file-input" accept="image/*,application/pdf" required>
-    </div>
-    <div class="mb-4">
-      <label>Tax Registration:</label>
-      <input type="file" name="tax_registration" class="file-input" accept="image/*,application/pdf">
-    </div>
-
-    <!-- Transaction Commission -->
-    <div class="section-title">Transaction Commission / عمولة المعاملات</div>
-    <div class="flex flex-col gap-2">
-      <label><input type="radio" name="commission_option" value="option1" class="radio radio-custom" required> First Option: 1499 AED registration + 3% transaction</label>
-      <label><input type="radio" name="commission_option" value="option2" class="radio radio-custom"> Second Option: Zero upfront, 5% on transactions</label>
-    </div>
-
-    <!-- Terms & Conditions -->
-    <div class="section-title">Terms & Conditions</div>
-    <label class="flex items-center">
-      <input type="checkbox" name="accept_terms" class="checkbox checkbox-custom" required>
-      I accept the Terms & Conditions (<span class="terms-button cursor-pointer text-accent" onclick="toggleTerms()">Read</span>)
-    </label>
-    <div id="termsContent" class="toggle-section">
-      We, "<span id='companyNamePlaceholder'>Company Name</span>" (hereinafter "the Second Party"), agree to support Tolaab program (hereinafter "the First Party") and abide by the terms below.<br><br>
-      نحن "<span id='companyNamePlaceholderAr'>Company Name</span>" (ويشار إليه/إليها بـ "الطرف الثاني") نوافق على دعم برنامج طلاب مع الالتزام بالشروط أدناه.<br><br>
-      Valid 1 year from 1st Nov 2025 unless 30-day notice for renewal.<br>
-      تسري لمدة سنة من 1 نوفمبر 2025، ما لم يخطر أحد الطرفين الآخر 30 يوماً مسبقاً.<br><br>
-      Suspension possible for non-payment or breach.<br>
-      تحتفظ طلاب بحق إيقاف الخدمات في حال عدم السداد بعد 5 أيام أو الإخلال بالشروط.<br><br>
-      Either party may terminate with 30-day notice; Second Party honors discounts for 30 days.<br>
-      يحق لأي طرف إنهاء الاتفاقية بإشعار 30 يوماً مع الالتزام بالخصومات لمدة 30 يوم.<br><br>
-      Marketing files editable for First Party use.<br>
-      يتعهد الطرف الثاني بأن تكون ملفات التسويق قابلة للتحرير للطرف الأول.<br><br>
-      Discount granted across UAE branches.<br>
-      يتعهد الطرف الثاني بمنح المستخدمين الخصم عبر جميع فروعه في الإمارات.<br><br>
-      Commission tracked monthly, details in vendor dashboard.<br>
-      العمولة تتبع شهرياً والتفاصيل متاحة في لوحة التحكم.<br><br>
-      Confidentiality of exchanged info required.<br>
-      الالتزام بسرية المعلومات المتبادلة.<br><br>
-      No illegal use of Tolaab platform.<br>
-      عدم استخدام المنصة لأغراض غير قانونية.<br><br>
-      Governed by Abu Dhabi and UAE federal laws.<br>
-      تخضع الاتفاقية لقوانين أبوظبي والقوانين الاتحادية.
-    </div>
-
-    <!-- Submit -->
-    <button type="submit" class="btn">Submit Information</button>
-
-  </form>
-</div>
 
 <script>
 function toggleTerms() {
   const content = document.getElementById('termsContent');
-  content.style.display = content.style.display === 'block' ? 'none' : 'block';
+  content.style.display = content.style.display === 'grid' ? 'none' : 'grid';
 }
 </script>
-
 </body>
 </html>
